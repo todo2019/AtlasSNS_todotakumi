@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
+Route::get('/dashboard', function () {
+    return view('index');
+})->middleware('auth');
+
+
 Route::get('top', [PostsController::class, 'index']);
 
 Route::get('profile', [ProfileController::class, 'profile']);
