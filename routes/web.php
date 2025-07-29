@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,22 +19,20 @@ use Illuminate\Support\Facades\Route;
 
 
 
-require __DIR__ . '/auth.php';
+require __DIR__. '/auth.php';
 
-Route::get('/dashboard', function () {
-    return view('index');
+Route::get('/dashboard',function(){
+    return view('dashboard');
 })->middleware('auth');
 
 
-Route::get('top', [PostsController::class, 'index']);
+  Route::middleware(['auth'])->group(function(){
+    Route::get('top', [PostsController::class, 'index']);
 
-Route::get('profile', [ProfileController::class, 'profile']);
+    Route::get('profile', [ProfileController::class, 'profile']);
 
-Route::get('search', [UsersController::class, 'index']);
+    Route::get('search', [UsersController::class, 'index']);
 
-Route::get('follow-list', [PostsController::class, 'index']);
-Route::get('follower-list', [PostsController::class, 'index']);
-
-Route::get('/dashboard', function () {
-    return view('login');
-})->middleware('auth');
+    Route::get('follow-list', [PostsController::class, 'index']);
+    Route::get('follower-list', [PostsController::class, 'index']);
+});
