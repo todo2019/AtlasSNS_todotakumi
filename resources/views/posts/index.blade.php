@@ -1,6 +1,15 @@
 <x-login-layout>
 
 
-  <h2>機能を実装していきましょう。</h2>
+  <div class="container">
+
+  <form action="/top" method="post">
+    @csrf
+    <input type="text" name="posts" class="posts" placeholder="投稿内容を入力してください。">
+    <button type="submit" class="btn btn-success" >
+      <img src="/images/post.png">
+    </button>
+  </form>
+  </div>
 
 </x-login-layout>
