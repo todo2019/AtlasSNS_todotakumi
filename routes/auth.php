@@ -20,3 +20,7 @@ Route::middleware('guest')->group(function () {
     Route::post('added', [RegisteredUserController::class, 'added']);
 
 });
+
+    Route::middleware('auth')->group(function () {
+    Route::post('logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+});
