@@ -1,13 +1,15 @@
       <div id="head">
-          <hi><a href="{{ route('top') }}"><img src="images/atlas.png"></a></hi>
-          <div id="header">
+          <h1><a href="{{ route('top') }}" ><img src="images/atlas.png" class="logo"></a></h1>
+          <div class="header" id="header">
               <div id="username">
-                  <p>{{ Auth::user()->username }}さん</p>
+                  <p>{{ Auth::user()->username }}　さん</p>
               </div>
 
               <div class="accordion-menu">
-                <div class="toggle-button"  id="menu-toggle">
-                    &lt;
+                <div class="toggle-button"  id="menu-toggle"></div>
+
+                <div id="icon">
+                  <p>{{ Auth::user()->icon_image}}</p>
                 </div>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

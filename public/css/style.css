@@ -29,9 +29,15 @@ header {
     align-items: center;
 }
 
-#header {
+.logo {
+    height: 36px;
+}
+
+.header {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
 
 }
 
@@ -52,10 +58,36 @@ header {
 
 .navi-menu.active {
     display: block;
+    transform: translateY(100%);
+}
+
+.accordion-menu {
+    display: flex;
 }
 
 .toggle-button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    position: relative;
     cursor: pointer;
-    font-size: 24px;
-    user-select: none;
+}
+
+.toggle-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.toggle-button.active {
+    display: block;
+    transform: translate(-50%, -50%) rotate(-180deg);
+    display: flex;
+    align-items: flex-end;
 }
