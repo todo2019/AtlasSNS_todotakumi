@@ -11,4 +11,13 @@
   </form>
   </div>
 
+  <div class="container">
+    <ul class="list">
+      @foreach($users as $user)
+      <li>{{ $user->icon_image}}</li>
+      <li>{{ $user->username}}</li>
+      @endforeach
+    </ul>
+  </div>
+
 </x-login-layout>

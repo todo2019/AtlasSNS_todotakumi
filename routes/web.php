@@ -32,7 +32,12 @@ Route::get('/dashboard',function(){
     Route::get('profile', [ProfileController::class, 'profile']);
 
     Route::get('search', [UsersController::class, 'index']);
+    Route::get('search', [UsersController::class, 'human']);
 
     Route::get('follow-list', [PostsController::class, 'index']);
     Route::get('follower-list', [PostsController::class, 'index']);
+
+    Route::get('followList', [FollowsController::class, 'followList']);
+    Route::get('followerList', [FollowsController::class, 'followerList']);
+
 });
