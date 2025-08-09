@@ -2,9 +2,9 @@
 
  <div class="container">
 
-  <form action="/top" method="post">
+  <form action="/search" method="post">
     @csrf
-    <input type="text" name="posts" class="posts" placeholder="ユーザー名">
+    <input type="text" name="keyword" class="keyword" placeholder="ユーザー名">
     <button type="submit" class="btn btn-success" >
       <img src="/images/search.png">
     </button>

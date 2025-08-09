@@ -34,6 +34,7 @@ Route::get('/dashboard',function(){
 
     Route::get('search', [UsersController::class, 'index']);
     Route::get('search', [UsersController::class, 'human']);
+    Route::post('search', [UsersController::class, 'search']);
 
     Route::get('follow-list', [PostsController::class, 'index']);
     Route::get('follower-list', [PostsController::class, 'index']);
