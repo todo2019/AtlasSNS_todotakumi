@@ -1,12 +1,14 @@
 <x-login-layout>
 
-  <form action="/update" method="POST" enctype="multipart/form-data">
+  <form action="/profile" method="POST" enctype="multipart/form-data">
     @csrf
+
+     <input type="hidden" name="id" value="{{ Auth::id() }}">
 
    <ul class="UserProfile">
       <li>ユーザー名<input type="text" name="username" value="{{ Auth::user()->username }}"></li>
 
-      <li>メールアドレス<input type="text" name="mail" value="{{ Auth::user()->email }}"></li>
+      <li>メールアドレス<input type="text" name="email" value="{{ Auth::user()->email }}"></li>
 
       <li>パスワード<input type="password" name="password" value="{{ Auth::user()->password }}"></li>
 
@@ -18,9 +20,8 @@
 
     </ul>
 
-    <button type="submit" class="btn btn-success" >
-      {{ __('更新') }}
-    </button>
+    <button type="submit" class="btn btn-success" >更新
 
-</form>
+    </button>
+  </form>
 </x-login-layout>

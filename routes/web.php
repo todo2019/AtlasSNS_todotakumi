@@ -30,6 +30,7 @@ Route::get('/dashboard',function(){
     Route::get('top', [PostsController::class, 'index'])->name('top');
 
     Route::get('profile', [ProfileController::class, 'profile']);
+    Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('search', [UsersController::class, 'index']);
     Route::get('search', [UsersController::class, 'human']);
