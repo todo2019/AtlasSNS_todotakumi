@@ -6,7 +6,7 @@
   <form action="/top" method="post">
     @csrf
     <input type="text" name="posts" class="posts" placeholder="投稿内容を入力してください。">
-    <button type="submit" class="btn btn-success" >
+    <button type="submit" class="post-icon" >
       <img src="/images/post.png">
     </button>
   </form>

@@ -31,7 +31,7 @@ class UsersController extends Controller
         }else{
              $users = User::where('id', '!=', Auth::id())->get();
         }
-        return view('users.search', compact('users'));
+        return view('users.search', compact('users','keyword'));
 
     }
 }

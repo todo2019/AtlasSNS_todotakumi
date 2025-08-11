@@ -91,3 +91,32 @@ header {
     display: flex;
     align-items: flex-end;
 }
+
+.keyword {
+    font-size: 2rem;
+}
+
+.posts {
+    font-size: 3rem;
+}
+
+.post-icon {
+    align-items: center;
+}
+
+.post-icon img {
+    height: 3rem;
+    width: auto;
+}
+
+.container {
+    display: block;
+}
+
+.result {
+    display: none;
+}
+
+.result.active {
+    display: block;
+}

@@ -11,3 +11,35 @@ $(function () {
     });
   });
 });
+
+$(function () {
+  if (localStorage.getItem('resultActive') === 'true') {
+    $('.result').addClass('active');
+  }
+
+  $('.search-icon').click(function (e) {
+    const keyword = $('.keyword').val().trim();
+    $('.result').removeClass('active');
+    localStorage.removeItem('resultActive');
+
+    if (keyword !== '') {
+      $('.result').addClass('active');
+      localStorage.setItem('resultActive', 'true');
+    }
+  });
+
+  $(window).on('beforeunload unload', function () {
+    if ($('.result').hasClass('active')) {
+      return;
+    }
+    $('.result').removeClass('active');
+    localStorage.removeItem('resultActive');
+  });
+});
+
+$(function () {
+  $('a[href="/search"]').click(function () {
+    $('.result').removeClass('active');
+    localStorage.removeItem('resultActive');
+  });
+});

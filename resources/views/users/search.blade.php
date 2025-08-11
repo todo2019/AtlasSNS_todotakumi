@@ -1,21 +1,23 @@
 <x-login-layout>
 
  <div class="container">
-
-  <form action="/search" method="post">
-    @csrf
-    <input type="text" name="keyword" class="keyword" placeholder="ユーザー名">
-    <button type="submit" class="btn btn-success" >
-      <img src="/images/search.png">
-    </button>
-  </form>
+    <form action="/search" method="post">
+      @csrf
+      <input type="text" name="keyword" class="keyword" placeholder="ユーザー名">
+      <button type="submit" class="search-icon" >
+        <img src="/images/search.png">
+      </button>
+        <h1 class="result">検索ワード：{{ $keyword ?? '' }}</h1>
+    </form>
   </div>
 
-  <div class="container">
+  <div class="user-list">
     <ul class="list">
       @foreach($users as $user)
-      <li>{{ $user->icon_image}}</li>
-      <li>{{ $user->username}}</li>
+      <li>
+        <span class="icon">{{ $user->icon_image}}</span>
+        <span class="name">{{ $user->username}}</span>
+      </li>
       @endforeach
     </ul>
   </div>
