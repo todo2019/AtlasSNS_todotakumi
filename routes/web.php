@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\FollowsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,7 @@ Route::get('/dashboard',function(){
     Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('search', [UsersController::class, 'index']);
-    Route::get('search', [UsersController::class, 'human']);
+    Route::get('search/human', [UsersController::class, 'human']);
     Route::post('search', [UsersController::class, 'search'])->name('search');
 
     Route::get('follow-list', [PostsController::class, 'index']);
@@ -41,5 +42,11 @@ Route::get('/dashboard',function(){
 
     Route::get('followList', [FollowsController::class, 'followList']);
     Route::get('followerList', [FollowsController::class, 'followerList']);
+
+    Route::prefix('search')->group(function () {
+    Route::post('/follow/{user}', [FollowsController::class, 'follow'])->name('follow');
+    Route::post('/unfollow/{user}', [FollowsController::class, 'unfollow'])->name('unfollow');
+    Route::post('/toggle-follow/{user}', [FollowsController::class, 'toggleFollow'])->name('toggleFollow');
+  });
 
 });

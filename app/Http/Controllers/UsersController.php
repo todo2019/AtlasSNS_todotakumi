@@ -11,7 +11,8 @@ class UsersController extends Controller
 {
     //
     public function index(){
-        return view('users.search');
+        $users = User::all();
+        return view('users.search', compact('users'));
     }
 
     public function human(){

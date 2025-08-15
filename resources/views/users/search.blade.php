@@ -17,9 +17,16 @@
       <li>
         <span class="icon">{{ $user->icon_image}}</span>
         <span class="name">{{ $user->username}}</span>
+        <form action="{{ route('toggleFollow', $user->id) }}" method="post">
+          @csrf
+          <button type="submit">
+            {{ Auth::user()->isFollowing($user->id) ? 'フォロー解除' : 'フォローする' }}
+          </button>
+        </form>
       </li>
       @endforeach
     </ul>
+
   </div>
 
 </x-login-layout>
