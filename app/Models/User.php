@@ -53,6 +53,10 @@ class User extends Authenticatable
         );
     }
 
+    public function post(){
+        return $this->hasMany(Post::class);
+    }
+
      public function isFollowing($userId)
     {
         return $this->followings()->where('followed_id', $userId)->exists();

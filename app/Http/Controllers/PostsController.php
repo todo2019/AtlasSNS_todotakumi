@@ -2,18 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Post;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
-    //
     public function index(){
-        return view('posts.index');
+
+        $authUser = Auth::user();
+
+
+        $followUserIds = $authUser->followings()->pluck('users.id')->toArray();
+        $followUserIds[] = $authUser->id;
+
+        $post = \DB::table('posts')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->whereIn('posts.user_id', $followUserIds)
+            ->orderBy('posts.created_at', 'desc')
+            ->select(
+                'posts.id as post_id',
+                'posts.post',
+                'posts.created_at',
+                'users.id as user_id',
+                'users.username',
+                'users.icon_image'
+            )
+            ->get();
+
+
+        return view('posts.index', compact('post'));
     }
 
-    public function show(){
-  // Postモデル経由でpostsテーブルのレコードを取得
-  $posts = Post::get();
-  return view('index', compact('posts'));
+    public function show($id){
+      $post = Post::findOrFail($id);
+      return view('posts.show', compact('post'));
 }
+
+    public function post(Request $request)
+    {
+      $request->validate([
+        'post'=>'required|string|min:1|max:150',
+      ]);
+
+      $post=new Post;
+      $post->user_id=Auth::id();
+      $post->post=$request->post;
+      $post->save();
+
+       return redirect()->route('top');
+    }
+
 }
