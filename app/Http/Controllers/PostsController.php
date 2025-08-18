@@ -39,7 +39,7 @@ class PostsController extends Controller
     public function show($id){
       $post = Post::findOrFail($id);
       return view('posts.show', compact('post'));
-}
+    }
 
     public function post(Request $request)
     {
@@ -55,4 +55,23 @@ class PostsController extends Controller
        return redirect()->route('top');
     }
 
+    public function edit($id)
+    {
+    $post = Post::findOrFail($id);
+    return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+  {
+    $request->validate([
+        'post' => 'required|string|min:1|max:150',
+    ]);
+
+    $post = Post::findOrFail($id);
+    $post->update([
+        'post' => $request->input('post'),
+    ]);
+
+    return redirect()->route('top');
+  }
 }

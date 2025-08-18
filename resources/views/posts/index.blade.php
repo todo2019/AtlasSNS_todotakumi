@@ -14,18 +14,28 @@
 
   <ul class='post-list'>
     @foreach($post as $posts)
-     <li>
+    <li>
       <img src="{{ $posts->icon_image ?? '/default_icon.png' }}" >
       {{ $posts->username }}:
       {{ $posts->post }}
-      <form action="{{ route('edit') }}" method="post" >
-        @csrf
-        <button type="submit" class="edit-icon" >
-          <img src="/images/edit.png" >
-        </button>
-      </form>
+      @if($posts->user_id == Auth::id())
+      <img class="edit-icon" src="/images/edit.png">
+
+
+      <div class="edit-item">
+      <form action="{{ route('post.update', ['id' => $posts->post_id]) }}" method="POST">
+          @csrf
+          @method('PUT')
+          <input type="text" name="post" class="post-edit" value="{{ $posts->post }}">
+          <button type="submit">
+            <img class="edit-icon2" src="/images/edit.png">
+          </button>
+        </form>
+      </div>
+      @endif
     </li>
     @endforeach
   </ul>
+
 
 </x-login-layout>

@@ -4,7 +4,6 @@ $(function () {
     $('.navi-menu').toggleClass('active');
 
 
-    // メニューリンクをクリックしたら閉じる（任意）
     $('.navi-menu li a').click(function () {
       $('#menu-toggle').removeClass('active').html('>');
       $('.navi-menu').removeClass('active');
@@ -41,5 +40,16 @@ $(function () {
   $('a[href="/search"]').click(function () {
     $('.result').removeClass('active');
     localStorage.removeItem('resultActive');
+  });
+});
+
+$(function () {
+  $('.edit-icon').click(function () {
+    $(this).closest('li').find('.edit-item').toggle();
+  });
+
+  $('.edit-icon2').click(function (e) {
+    e.preventDefault();
+    $(this).closest('.edit-item').hide();
   });
 });

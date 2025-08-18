@@ -120,3 +120,16 @@ header {
 .result.active {
     display: block;
 }
+
+.edit-icon {
+    height: 3rem;
+    width: auto;
+}
+
+.edit-item {
+    display: none;
+}
+
+.edit-item.active {
+    display: block;
+}
