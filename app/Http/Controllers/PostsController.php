@@ -74,4 +74,10 @@ class PostsController extends Controller
 
     return redirect()->route('top');
   }
+
+  public function delete($id)
+  {
+     Post::where('id', $id)->delete();
+     return redirect('/top');
+  }
 }

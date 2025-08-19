@@ -20,6 +20,9 @@
       {{ $posts->post }}
       @if($posts->user_id == Auth::id())
       <img class="edit-icon" src="/images/edit.png">
+      <a href="{{ route('post.delete', ['id' => $posts->post_id]) }}"onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+        <img class="delete-icon" src="/images/trash.png">
+      </a>
 
 
       <div class="edit-item">

@@ -33,6 +33,8 @@ Route::get('/dashboard',function(){
     Route::get('top/{id}', [PostsController::class, 'show'])->name('posts.show');
     Route::get('top/{id}/edit', [PostsController::class, 'edit'])->name('post.edit');
     Route::put('top/{id}', [PostsController::class, 'update'])->name('post.update');
+    Route::get('top/{id}/delete', [PostsController::class, 'delete'])->name('post.delete');
+
 
 
     Route::get('profile', [ProfileController::class, 'profile']);
