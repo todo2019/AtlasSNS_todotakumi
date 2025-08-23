@@ -3,7 +3,7 @@
   <!-- 適切なURLを入力してください -->
   {!! Form::open(['url' => 'login']) !!}
 
-  <div class="container">
+  <div class="login-screen">
     <p class='welcome'>AtlasSNSへようこそ</p>
 
     <ul class="login-form">
