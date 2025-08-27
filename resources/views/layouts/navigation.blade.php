@@ -9,7 +9,7 @@
                 <div class="toggle-button"  id="menu-toggle"></div>
 
                 <div id="icon">
-                  <p>{{ Auth::user()->icon_image}}</p>
+                  <img src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン" >
                 </div>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

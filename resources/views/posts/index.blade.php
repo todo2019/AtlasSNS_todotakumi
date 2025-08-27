@@ -13,23 +13,23 @@
   </div>
 
   <ul class='post-list'>
-    @foreach($post as $posts)
+    @foreach($posts as $post)
     <li>
-      <img src="{{ $posts->icon_image ?? '/default_icon.png' }}" >
-      {{ $posts->username }}:
-      {{ $posts->post }}
-      @if($posts->user_id == Auth::id())
+      <img src="" >
+      <p>{{ $post->user->username }}</p>
+      <p>{{ $post->id }}: {{ $post->post }}</p>
+      @if($post->user_id == Auth::id())
       <img class="edit-icon" src="/images/edit.png">
-      <a href="{{ route('post.delete', ['id' => $posts->post_id]) }}"onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+      <a href="{{ route('post.delete',  ['id' => $post->id]) }}"onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
         <img class="delete-icon" src="/images/trash.png">
       </a>
 
 
       <div class="edit-item">
-      <form action="{{ route('post.update', ['id' => $posts->post_id]) }}" method="POST">
+      <form action="{{ route('post.update',  ['id' => $post->id]) }}" method="POST">
           @csrf
           @method('PUT')
-          <input type="text" name="post" class="post-edit" value="{{ $posts->post }}">
+          <input type="text" name="post" class="post-edit" value="{{ $post->post }}">
           <button type="submit">
             <img class="edit-icon2" src="/images/edit.png">
           </button>

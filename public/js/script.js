@@ -48,8 +48,7 @@ $(function () {
     $(this).closest('li').find('.edit-item').toggle();
   });
 
-  $('.edit-icon2').click(function (e) {
-    e.preventDefault();
+  $('.edit-item form').submit(function () {
     $(this).closest('.edit-item').hide();
   });
 });

@@ -18,31 +18,20 @@ class PostsController extends Controller
         $followUserIds = $authUser->followings()->pluck('users.id')->toArray();
         $followUserIds[] = $authUser->id;
 
-        $post = \DB::table('posts')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->whereIn('posts.user_id', $followUserIds)
-            ->orderBy('posts.created_at', 'desc')
-            ->select(
-                'posts.id as post_id',
-                'posts.post',
-                'posts.created_at',
-                'users.id as user_id',
-                'users.username',
-                'users.icon_image'
-            )
-            ->get();
+        $posts = Post::with('user')
+        ->whereIn('user_id', $followUserIds)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-
-        return view('posts.index', compact('post'));
+        return view('posts.index', compact('posts'));
     }
 
-    public function show($id){
-      $post = Post::findOrFail($id);
-      return view('posts.show', compact('post'));
-    }
 
     public function post(Request $request)
     {
+
+    dd($request->all());
+
       $request->validate([
         'post'=>'required|string|min:1|max:150',
       ]);
@@ -55,21 +44,17 @@ class PostsController extends Controller
        return redirect()->route('top');
     }
 
-    public function edit($id)
-    {
-    $post = Post::findOrFail($id);
-    return view('posts.edit', compact('post'));
-    }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $post)
   {
+
     $request->validate([
         'post' => 'required|string|min:1|max:150',
     ]);
 
-    $post = Post::findOrFail($id);
+    $post = Post::findOrFail($post);
     $post->update([
-        'post' => $request->input('post'),
+        'post' => $request->post,
     ]);
 
     return redirect()->route('top');

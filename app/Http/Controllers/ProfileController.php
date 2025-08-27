@@ -24,13 +24,35 @@ class ProfileController extends Controller
         $password=$request->input('password');
         $bio=$request->input('bio');
 
-        User::where('id',$id)->update([
-            'username'=>$username,
-            'email'=>$email,
-            'password'=>Hash::make($request->password),
-            'bio'=>$bio,
+        $updateData = [
+        'username' => $username,
+        'email'    => $email,
+        'password' => Hash::make($password),
+        'bio'      => $bio,
+        ];
 
-        ]);
+        if (!empty($password)) {
+        $updateData['password'] = Hash::make($password);
+        }
+
+
+        $iconPath = null;
+        if ($request->hasFile('icon_image')) {
+
+          $filename = $request->file('icon_image')->getClientOriginalName();
+
+          $iconPath = $request->file('icon_image')->storeAs(
+            '',
+            $filename,
+            'public',
+            'images'
+           );
+
+          $updateData['icon_image'] = $iconPath;
+        }
+
+          User::where('id',$id)->update($updateData);
+
           return redirect()->route('profile.update')->with('success', 'プロフィールを更新しました');
     }
-}
+};
