@@ -9,17 +9,16 @@
                 <div class="toggle-button"  id="menu-toggle"></div>
 
                 <div id="icon">
-                  <img src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン" >
+                  <img src="{{ asset('images/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン" >
                 </div>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                    @csrf
                 </form>
                 <ul class="navi-menu">
-                  <li><a href="/top">ホーム</a></li>
-                  <li><a href="/profile">プロフィール</a></li>
-                  <li><a href="/login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
-
+                  <li class='navi-link'><a href="/top">ホーム</a></li>
+                  <li class='navi-link'><a href="/profile">プロフィール</a></li>
+                  <li class='navi-link'><a href="/login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
                 </ul>
               </div>
           </div>

@@ -1,32 +1,53 @@
 <x-login-layout>
-
-  <form action="/profile" method="POST" enctype="multipart/form-data">
-    @csrf
+  <div class="container-change">
+    <form action="/profile" method="POST" enctype="multipart/form-data">
+      @csrf
 
      <input type="hidden" name="id" value="{{ Auth::id() }}">
 
-   <ul class="UserProfile">
-      <li>ユーザー名<input type="text" name="username" value="{{ Auth::user()->username }}"></li>
+     <img  class='my-icon' src="{{ asset('images/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン" >
 
-      <li>メールアドレス<input type="text" name="email" value="{{ Auth::user()->email }}"></li>
+     <ul class="UserProfile">
+        <li class='profile-name'>
+            <p class='my-data'>ユーザー名</p>
+            <input type="text" name="username" class='input-name' value="{{ Auth::user()->username }}">
+        </li>
 
-      <li>パスワード<input type="password" name="password" ></li>
+        <li class='profile-email'>
+          <p class='my-data'>メールアドレス</p>
+          <input type="text" name="email" class='input-email' value="{{ Auth::user()->email }}">
+        </li>
 
-      <li>パスワード確認<input type="password" name="password_confirmation" ></li>
+        <li class='profile-password'>
+          <p class='my-data'>パスワード</p>
+          <input type="password" name="password" class='input-password' >
+        </li>
 
-      <li>自己紹介<input type="text" name="bio" value="{{ Auth::user()->bio }}"></li>
+        <li class='profile-confirmation'>
+          <p class='my-data'>パスワード確認</p>
+          <input type="password" name="password_confirmation" class='input-confirmation' >
+        </li>
 
-      <li>アイコン画像<input type="file" name="icon_image"></li>
+        <li class='profile-bio'>
+          <p class='my-data'>自己紹介</p>
+          <input type="text" name="bio" class='input-bio' value="{{ Auth::user()->bio }}">
+        </li>
 
-    </ul>
+        <li class='profile-icon'>
+          <p class='my-data'>アイコン画像</p>
+          <input type="file" name="icon_image" class='input-icon' >
+        </li>
 
-    <button type="submit" class="btn btn-success" >更新</button>
+      </ul>
 
-    @if(session('success'))
-      <div class="alert alert-success">
-        {{ session('success') }}
-      </div>
-    @endif
+      <button type="submit" class="btn-success" >更新</button>
 
-  </form>
+      @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+      @endif
+
+    </form>
+  </div>
 </x-login-layout>

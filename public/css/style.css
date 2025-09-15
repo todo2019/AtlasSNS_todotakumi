@@ -10,27 +10,33 @@ header {
 }
 
 /* main content */
+
+
 #row {
     display: flex;
-    flex-flow: row wrap;
+
 }
 
 #container {
-    flex: 0 0 80%;
+    flex: 1 1 80%;
+    border-right: 1px solid;
 }
 
 #side-bar {
-    flex: 0 0 19%;
-    border-left: 1px solid #727272;
+    max-width: 100%;
+    width: 375px;
+    text-align: center;
 }
 
 #head {
     display: flex;
+    height: 128px;
     align-items: center;
 }
 
 .logo {
     height: 36px;
+    margin-left: 48px;
 }
 
 .header {
@@ -48,20 +54,27 @@ header {
     color: white;
 }
 
+#icon {
+    margin-right: 32px;
+}
+
 .navi-menu {
     display: none;
     list-style: none;
     padding: 0;
-    margin: 10px 0 0;
 }
 
 .navi-menu.active {
     display: block;
-    transform: translateY(100%);
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-top: 128px;
 }
 
 .accordion-menu {
     display: flex;
+    align-items: center;
 }
 
 .toggle-button {
@@ -70,6 +83,7 @@ header {
     border: none;
     position: relative;
     cursor: pointer;
+    margin-top: 18px;
 }
 
 .toggle-button::before {
@@ -86,27 +100,25 @@ header {
 
 .toggle-button.active {
     display: block;
-    transform: translate(-50%, -50%) rotate(-180deg);
+    transform: rotate(-180deg);
     display: flex;
     align-items: flex-end;
+}
+
+.navi-link {
+    background-color: #f5f8fa;
+    white-space: nowrap;
+    padding: 53px;
+    border: 2px solid blue;
+    width: 375px;
+    color: #848484;
 }
 
 .keyword {
     font-size: 2rem;
 }
 
-.posts {
-    font-size: 3rem;
-}
 
-.post-icon {
-    align-items: center;
-}
-
-.post-icon img {
-    height: 3rem;
-    width: auto;
-}
 
 .container {
     display: block;
@@ -120,9 +132,181 @@ header {
     display: block;
 }
 
+/* サイドバーの設定　*/
+
+#side-confirm {
+    border-bottom: 1px solid;
+    border-color: black;
+}
+
+.username {
+    font-size: 2rem;
+    margin-top: 38px;
+    margin-left: 2rem;
+    color: #222222;
+}
+
+.follow-list {
+    font-size: 1rem;
+    display: flex;
+    color: #222222;
+    padding-top: 16px;
+    margin-bottom: 16px;
+}
+
+
+.follow-number {
+    margin-left: 1rem;
+    font-size: 18px;
+}
+
+.follower-list {
+    font-size: 1rem;
+    display: flex;
+    color: #222222;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.follower-number {
+    margin-left: 1rem;
+    font-size: 18px;
+}
+
+.people {
+    margin-left: 32px;
+    font-size: 18px;
+}
+
+.list-btn {
+    background-color: #0656cf;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 32px;
+    display: inline-block;
+}
+
+.search-btn {
+    background-color: #0656cf;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 32px;
+    display: inline-block;
+    align-items: center;
+}
+
+
+/* topの投稿一覧（入力フォーム部門）　*/
+
+.user-post {
+    display: flex;
+    align-items: flex-start;
+}
+
+.user-post .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-container {
+    display: flex;
+    border-bottom: 8px solid;
+    border-color: #e0e0e0;
+}
+
+
+.user-icon {
+    width: 64px;
+    height: 64px;
+    margin-left: 64px;
+    margin-top: 32px;
+}
+
+
+.post {
+    border: none;
+    margin-left: 32px;
+    font-size: 2rem;
+    width: 640px;
+    height: 180px;
+}
+
+
+input.post {
+    background-color: #f5f8fa;
+}
+
+input[type="text"]::placeholder {
+    color: #727272;
+}
+
+input[type="text"] {
+    padding-top: 2px;
+}
+
+
+.post-icon {
+    border: none;
+    vertical-align: bottom;
+    margin-bottom: 18px;
+}
+
+.post-icon img {
+    height: 56px;
+}
+
+
+/* topの投稿一覧（自分とフォロアーの投稿履歴部門） */
+
+.post-result {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 16px;
+    border-bottom: 1px solid;
+    border-color: #e0e0e0;
+    margin-bottom: 12px;
+}
+
+.update-at {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    margin-right: 8px;
+}
+
+.user-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+}
+
+.user-post img {
+    margin-left: 80px;
+}
+
+.user-data {
+    display: flex;
+}
+
+.icon-set {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    margin-right: 8px;
+}
+
+.edit-button {
+    border: none;
+    background-color: #f5f8fa;
+}
+
 .edit-icon {
-    height: 3rem;
-    width: auto;
+    height: 5rem;
 }
 
 .edit-item {
@@ -131,4 +315,70 @@ header {
 
 .edit-item.active {
     display: block;
+}
+
+.delete-icon {
+    height: 5rem;
+}
+
+
+/* マイプロフィールのCSS */
+
+.container-change {
+    margin-top: 6%;
+    justify-items: center;
+}
+
+.my-icon,
+.profile-name {
+    display: flex;
+}
+
+.profile-name,
+.profile-email,
+.profile-password,
+.profile-confirmation,
+.profile-bio,
+.profile-icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.my-data {
+    text-align: left;
+    min-width: 120px;
+}
+
+
+.input-name,
+.input-email,
+.input-password,
+.input-confirmation,
+.input-bio {
+    height: 42px;
+    width: 380px;
+}
+
+.input-icon {
+    border: 1px solid black;
+    background-color: #ffffff;
+    height: 84px;
+    width: 380px;
+}
+
+.input[type=file] {
+    padding: 16px;
+}
+
+
+.btn-success {
+    margin-top: 32px;
+    background-color: #ed3a50;
+    height: 32px;
+    width: 180px;
+    border-radius: 8px;
+    border: none;
 }

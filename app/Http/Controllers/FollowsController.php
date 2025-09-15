@@ -36,7 +36,9 @@ class FollowsController extends Controller
             $follower -> unfollow($user -> id);
         }
             return back();
+         $followerCount = count(FollowUser::where('followed_user_id', $user->id)->get());
         }
+
 
     public function toggleFollow(User $user)
     {

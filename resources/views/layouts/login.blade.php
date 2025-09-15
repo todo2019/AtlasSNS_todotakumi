@@ -34,20 +34,21 @@
       {{ $slot }}
     </div>
     <div id="side-bar">
-      <div id="confirm">
-        <p>{{ Auth::user()->username }}さんの</p>
-        <div>
-          <p>フォロー数</p>
-          <p>〇〇名</p>
+      <div id="side-confirm">
+        <p class='username'>{{ Auth::user()->username }}さんの</p>
+        <div class='follow-list'>
+          <p class='follow-number'>フォロー数</p>
+          <p class='people'> {{ Auth::user()->followings()->count() }} 名</p>
         </div>
-        <p class="btn"><a href="/followLis">フォローリスト</a></p>
-        <div>
-          <p>フォロワー数</p>
-          <p>〇〇名</p>
+        <a class="list-btn" href="/followLis">フォローリスト</a>
+        <div class='follower-list'>
+          <p class='follower-number'>フォロワー数</p>
+        <p class='people'> {{ Auth::user()->followers()->count() }} 名</p>
         </div>
-        <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
+        <a class="list-btn" href="/followerList">フォロワーリスト</a>
+        <br>
       </div>
-      <p class="btn"><a href="/search">ユーザー検索</a></p>
+      <a class="search-btn" href="/search">ユーザー検索</a>
     </div>
   </div>
   <footer>

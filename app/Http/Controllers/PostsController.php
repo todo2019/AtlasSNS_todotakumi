@@ -30,8 +30,6 @@ class PostsController extends Controller
     public function post(Request $request)
     {
 
-    dd($request->all());
-
       $request->validate([
         'post'=>'required|string|min:1|max:150',
       ]);

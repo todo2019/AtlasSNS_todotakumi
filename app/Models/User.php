@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -78,3 +79,18 @@ class User extends Authenticatable
     }
 
 }
+
+    class Follow extends Model
+    {
+
+    public function followCount()
+    {
+    return FollowUser::where('following_id', $this->id)->count();
+    }
+
+    public function followerCount()
+    {
+    return FollowUser::where('followed_id', $this->id)->count();
+    }
+
+    }
