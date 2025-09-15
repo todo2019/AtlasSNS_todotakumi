@@ -40,15 +40,15 @@
           <p class='follow-number'>フォロー数</p>
           <p class='people'> {{ Auth::user()->followings()->count() }} 名</p>
         </div>
-        <a class="list-btn" href="/followLis">フォローリスト</a>
+        <a class="sidebar-btn" href="/followList">フォローリスト</a>
         <div class='follower-list'>
           <p class='follower-number'>フォロワー数</p>
         <p class='people'> {{ Auth::user()->followers()->count() }} 名</p>
         </div>
-        <a class="list-btn" href="/followerList">フォロワーリスト</a>
+        <a class="sidebar-btn" href="/followerList">フォロワーリスト</a>
         <br>
       </div>
-      <a class="search-btn" href="/search">ユーザー検索</a>
+      <a class="sidebar-btn" href="/search">ユーザー検索</a>
     </div>
   </div>
   <footer>

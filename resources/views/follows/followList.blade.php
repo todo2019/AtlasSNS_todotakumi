@@ -1,6 +1,22 @@
 <x-login-layout>
 
+  <div class='followList'>
+    <p class='follow-title'>フォロワーリスト</p>
+    <img  src   class='follow-icon'>
+  </div>
+  <ul >
+    @foreach($posts as $post)
+      <li class='post-result'>
+        <div class='user-post'>
+            <img src="{{ asset('images/' . $post->user->icon_image) }}" alt="アイコン">
+          <div class='user-data'>
+            <p>{{ $post->user->username }}</p>
+            <p>{{ $post->post }}</p>
+          </div>
+        </div>
+        <p class='update-at'>{{ $post->updated_at }}</p>
 
-  <h2>機能を実装していきましょう。</h2>
+    @endforeach
+  </ul>
 
 </x-login-layout>

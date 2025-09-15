@@ -35,7 +35,7 @@ header {
 }
 
 .logo {
-    height: 36px;
+    height: 64px;
     margin-left: 48px;
 }
 
@@ -111,7 +111,7 @@ header {
     padding: 53px;
     border: 2px solid blue;
     width: 375px;
-    color: #848484;
+    font-size: 32px;
 }
 
 .keyword {
@@ -178,23 +178,17 @@ header {
     font-size: 18px;
 }
 
-.list-btn {
-    background-color: #0656cf;
-    color: white;
-    padding: 8px;
-    border-radius: 8px;
-    margin: 32px;
-    display: inline-block;
-}
 
-.search-btn {
+.sidebar-btn {
     background-color: #0656cf;
+    font-size: 18px;
     color: white;
-    padding: 8px;
-    border-radius: 8px;
-    margin: 32px;
-    display: inline-block;
-    align-items: center;
+    padding: 24px;
+    border-radius: 16px;
+    margin: 32px auto;
+    display: block;
+    text-align: center;
+    width: 200px;
 }
 
 
@@ -382,3 +376,15 @@ input[type="text"] {
     border-radius: 8px;
     border: none;
 }
+
+
+/* followListのCSS　*/
+
+
+/* 投稿一覧のCSSはtopの投稿一覧と同じなので省略 */
+
+
+/*followerListのCSS */
+
+
+/* 投稿一覧のCSSはtopの投稿一覧と同じなので省略 */

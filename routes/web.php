@@ -36,6 +36,8 @@ Route::get('/dashboard',function(){
 
 
 
+
+
     Route::get('profile', [ProfileController::class, 'profile']);
     Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
 
@@ -45,6 +47,9 @@ Route::get('/dashboard',function(){
 
     Route::get('followList', [FollowsController::class, 'followList']);
     Route::get('followerList', [FollowsController::class, 'followerList']);
+    Route::get('followList', [FollowsController::class, 'followPost'])->name('follow.posts');
+    Route::get('followerList', [FollowsController::class, 'followerPost'])->name('follower.posts');
+
 
     Route::prefix('search')->group(function () {
     Route::post('/follow/{user}', [FollowsController::class, 'follow'])->name('follow');

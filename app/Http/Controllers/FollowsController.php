@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
 use App\Models\user;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
+
 
 
 class FollowsController extends Controller
@@ -50,5 +52,34 @@ class FollowsController extends Controller
             $follower -> follow($user -> id);
         }
         return back();
+    }
+
+
+    public function followPost(){
+
+        $authUser = Auth::user();
+
+        $followUserIds = $authUser->followings()->pluck('users.id')->toArray();
+
+        $posts = Post::with('user')
+        ->whereIn('user_id', $followUserIds)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('follows.followList', compact('posts'));
+    }
+
+     public function followerPost(){
+
+        $authUser = Auth::user();
+
+        $followerUserIds = $authUser->followers()->pluck('users.id')->toArray();
+
+        $posts = Post::with('user')
+        ->whereIn('user_id', $followerUserIds)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('follows.followerList', compact('posts'));
     }
 }

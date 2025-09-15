@@ -16,8 +16,8 @@
                    @csrf
                 </form>
                 <ul class="navi-menu">
-                  <li class='navi-link'><a href="/top">ホーム</a></li>
-                  <li class='navi-link'><a href="/profile">プロフィール</a></li>
+                  <li class='navi-link'><a href="/top">HOME</a></li>
+                  <li class='navi-link'><a href="/profile">プロフィール編集</a></li>
                   <li class='navi-link'><a href="/login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
                 </ul>
               </div>
