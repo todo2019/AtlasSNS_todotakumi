@@ -1,8 +1,10 @@
 <x-login-layout>
 
   <div class='followList'>
-    <p class='follow-title'>フォロワーリスト</p>
-    <img  src   class='follow-icon'>
+    <p class='follow-title'>フォローリスト</p>
+    @foreach($posts as $post)
+      <img src="{{ asset('images/' . $post->user->icon_image) }}" class='follow-icon' alt="アイコン">
+    @endforeach
   </div>
   <ul >
     @foreach($posts as $post)
@@ -15,7 +17,6 @@
           </div>
         </div>
         <p class='update-at'>{{ $post->updated_at }}</p>
-
     @endforeach
   </ul>
 

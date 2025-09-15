@@ -45,10 +45,10 @@ Route::get('/dashboard',function(){
     Route::get('search/human', [UsersController::class, 'human']);
     Route::post('search', [UsersController::class, 'search'])->name('search');
 
-    Route::get('followList', [FollowsController::class, 'followList']);
-    Route::get('followerList', [FollowsController::class, 'followerList']);
     Route::get('followList', [FollowsController::class, 'followPost'])->name('follow.posts');
     Route::get('followerList', [FollowsController::class, 'followerPost'])->name('follower.posts');
+
+
 
 
     Route::prefix('search')->group(function () {

@@ -380,11 +380,47 @@ input[type="text"] {
 
 /* followListのCSS　*/
 
+.followList {
+    display: flex;
+    padding-top: 40px;
+    padding-bottom: 64px;
+    border-bottom: 8px solid #e0e0e0;
+}
+
+.follow-title {
+    font-size: 32px;
+    color: black;
+    margin-right: 64px;
+    margin-left: 96px;
+}
+
+.follow-icon {
+    padding-right: 8px;
+}
+
 
 /* 投稿一覧のCSSはtopの投稿一覧と同じなので省略 */
 
 
 /*followerListのCSS */
+
+.followerList {
+    display: flex;
+    padding-top: 40px;
+    padding-bottom: 64px;
+    border-bottom: 8px solid #e0e0e0;
+}
+
+.follower-title {
+    font-size: 32px;
+    color: black;
+    margin-right: 64px;
+    margin-left: 96px;
+}
+
+.follower-icon {
+    padding-right: 8px;
+}
 
 
 /* 投稿一覧のCSSはtopの投稿一覧と同じなので省略 */

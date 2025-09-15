@@ -1,9 +1,12 @@
 <x-login-layout>
 
 
-  <h2>機能を実装していきましょう。</h2>
-
-
+   <div class='followerList'>
+    <p class='follower-title'>フォロワーリスト</p>
+    @foreach($posts as $post)
+      <img src="{{ asset('images/' . $post->user->icon_image) }}" class='follower-icon' alt="アイコン">
+    @endforeach
+  </div>
    <ul >
     @foreach($posts as $post)
       <li class='post-result'>
