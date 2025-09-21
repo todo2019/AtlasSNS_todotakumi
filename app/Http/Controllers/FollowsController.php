@@ -18,11 +18,11 @@ class FollowsController extends Controller
 
     public function follow(User $user){
         $follower = Auth::user();
-        $is_following = $follower -> isFollowing($user -> id);
-        if ($is_following) {
-            $follower -> unfollow($user->id);
-            return back();
-        }
+
+        if (! $follower->isFollowing($user->id)) {
+        $follower->follow($user->id);
+    }
+        return back();
     }
 
     public function unfollow(User $user){
@@ -32,7 +32,6 @@ class FollowsController extends Controller
             $follower -> unfollow($user -> id);
         }
             return back();
-         $followerCount = count(FollowUser::where('followed_user_id', $user->id)->get());
         }
 
 
@@ -60,7 +59,9 @@ class FollowsController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
 
-        return view('follows.followList', compact('posts'));
+        $follows = $posts->pluck('user')->unique('id');
+
+        return view('follows.followList', compact('posts','follows'));
     }
 
      public function followerPost(){
@@ -74,6 +75,8 @@ class FollowsController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
 
-        return view('follows.followerList', compact('posts'));
+        $followers = $posts->pluck('user')->unique('id');
+
+        return view('follows.followerList', compact('posts','followers'));
     }
 }

@@ -16,7 +16,9 @@
     @foreach($posts as $post)
       <li class='post-result'>
         <div class='user-post'>
+          <a href="{{ route('user.profile.post', ['user' => $post->user->id]) }}">
             <img src="{{ asset('images/' . $post->user->icon_image) }}" alt="アイコン">
+          </a>
           <div class='user-data'>
             <p>{{ $post->user->username }}</p>
             <p>{{ $post->post }}</p>
@@ -26,7 +28,7 @@
       @if($post->user_id == Auth::id())
       <div class='icon-set'>
         <button type="button" class="edit-button">
-          <img class="edit-icon" src="/images/edit.png">
+         <img class="edit-icon" src="/images/edit.png">
         </button>
           <a href="{{ route('post.delete',  ['id' => $post->id]) }}"onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
             <img class="delete-icon" src="/images/trash.png">

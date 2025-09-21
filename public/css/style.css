@@ -72,6 +72,7 @@ header {
     margin-top: 128px;
 }
 
+
 .accordion-menu {
     display: flex;
     align-items: center;
@@ -105,14 +106,23 @@ header {
     align-items: flex-end;
 }
 
-.navi-link {
+.navi-menu li a {
+    display: block;
     background-color: #f5f8fa;
     white-space: nowrap;
-    padding: 53px;
+    padding: 59px;
+    padding-bottom: 42px;
     border: 2px solid blue;
-    width: 375px;
     font-size: 32px;
 }
+
+.navi-menu li :hover {
+    background-color: #00297e;
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+
 
 .keyword {
     font-size: 2rem;
@@ -255,6 +265,9 @@ input[type="text"] {
 
 
 /* topの投稿一覧（自分とフォロアーの投稿履歴部門） */
+
+
+/* 272行目から301行目まではathourprofile.balde.phpと共通のため省略 */
 
 .post-result {
     display: flex;
@@ -424,3 +437,17 @@ input[type="text"] {
 
 
 /* 投稿一覧のCSSはtopの投稿一覧と同じなので省略 */
+
+
+/* ほかのユーザーのプロフィール投稿一覧 */
+
+.user-card {
+    display: flex;
+    border-bottom: 8px solid;
+    border-color: #e0e0e0;
+    padding-bottom: 72px;
+}
+
+.follow-btn {
+    justify-content: flex-end;
+}

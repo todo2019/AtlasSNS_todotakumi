@@ -39,9 +39,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(
             User::class,
-            'follows',       // フォロー関係を保存する中間テーブル
-            'following_id',   // このユーザーID
-            'followed_id'    // フォロー相手のユーザーID
+            'follows',
+            'following_id',
+            'followed_id'
         );
     }
 
@@ -78,6 +78,10 @@ class User extends Authenticatable
         }
     }
 
+      public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
 
     class Follow extends Model

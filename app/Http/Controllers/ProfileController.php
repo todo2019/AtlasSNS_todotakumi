@@ -55,4 +55,12 @@ class ProfileController extends Controller
 
           return redirect()->route('profile.update')->with('success', 'プロフィールを更新しました');
     }
+
+      public function userdata()
+    {
+        $users = User::with('posts')->get();
+
+        return view('user.profile', compact('users'));
+    }
+
 };

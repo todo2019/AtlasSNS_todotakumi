@@ -1,5 +1,5 @@
       <div id="head">
-          <h1><a href="{{ route('top') }}" ><img src="images/atlas.png" class="logo"></a></h1>
+          <h1><a href="{{ route('top') }}" ><img src="{{ asset('images/atlas.png') }}" class="logo"></a></h1>
           <div class="header" id="header">
               <div id="username">
                   <p>{{ Auth::user()->username }}　さん</p>
@@ -16,9 +16,9 @@
                    @csrf
                 </form>
                 <ul class="navi-menu">
-                  <li class='navi-link'><a href="/top">HOME</a></li>
-                  <li class='navi-link'><a href="/profile">プロフィール編集</a></li>
-                  <li class='navi-link'><a href="/login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
+                  <li ><a href="/top">HOME</a></li>
+                  <li ><a href="/profile">プロフィール編集</a></li>
+                  <li ><a href="/login" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a></li>
                 </ul>
               </div>
           </div>

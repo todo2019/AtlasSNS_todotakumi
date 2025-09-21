@@ -35,4 +35,15 @@ class UsersController extends Controller
         return view('users.search', compact('users','keyword'));
 
     }
+
+      public function id($id)
+    {
+        $users = User::findOrFail($id);
+
+        $posts = $users->posts()
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('profiles.athorProfile', compact('users', 'posts'));
+    }
 }
