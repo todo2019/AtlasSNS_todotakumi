@@ -3296,8 +3296,8 @@ output {
   display: block
 }
 
-input[type=file] {
-  padding: 22px;
+input[type="file"] {
+  padding: 28px 0 28px 70px;
 }
 
 input[type=range] {
@@ -6130,7 +6130,6 @@ a.thumbnail:hover {
 .modal-backdrop {
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0
 }
 

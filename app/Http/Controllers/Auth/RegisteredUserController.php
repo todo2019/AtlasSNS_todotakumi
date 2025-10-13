@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
 
 class RegisteredUserController extends Controller
 {
@@ -28,15 +29,22 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
-    {
-        User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+
+    public function store(Request $request){
+
+        $request->validate([
+            'username' => 'required|string|min:2|max:12',
+            'email'    => 'required|string|email|min:5|max:40|unique:users,email',
+            'password' => 'required|string|alpha_num|min:8|max:20|confirmed',
         ]);
 
-        session()->flash('username',$request->username);
+        User::create([
+        'username' => $request->username,
+        'email'    => $request->email,
+        'password' => Hash::make($request->password),
+        ]);
+
+        session()->flash('username', $request->username);
 
         return redirect('added');
     }
@@ -45,4 +53,5 @@ class RegisteredUserController extends Controller
     {
         return view('auth.added');
     }
+
 }

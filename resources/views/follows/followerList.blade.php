@@ -3,6 +3,7 @@
 
    <div class='followerList'>
     <p class='follower-title'>フォロワーリスト</p>
+    {{ dd($followers) }}
     @foreach($followers as $follower)
       <a href="{{ route('user.profile.post', ['user' => $follower->id]) }}">
         <img src="{{ asset('images/' . $follower->icon_image) }}" class='follower-icon' alt="アイコン">

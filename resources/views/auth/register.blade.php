@@ -11,12 +11,21 @@
       <li class="register-item">
         {{ Form::label('ユーザー名') }}
         {{ Form::text('username',null,['class' => 'input']) }}
+          @error('username')
+            <div class="error">{{ $message }}</div>
+          @enderror
 
         {{ Form::label('メールアドレス') }}
         {{ Form::email('email',null,['class' => 'input']) }}
+          @error('email')
+            <div class="error">{{ $message }}</div>
+          @enderror
 
         {{ Form::label('パスワード') }}
         {{ Form::text('password',null,['class' => 'input']) }}
+          @error('password')
+            <div class="error">{{ $message }}</div>
+          @enderror
 
         {{ Form::label('パスワード確認') }}
         {{ Form::text('password_confirmation',null,['class' => 'input']) }}

@@ -43,12 +43,13 @@ $(function () {
   });
 });
 
+
 $(function () {
   $('.edit-icon').click(function () {
-    $(this).closest('li').find('.edit-item').toggle();
+    $('.modal, .modal-overlay').fadeIn();
   });
 
-  $('.edit-item form').submit(function () {
-    $(this).closest('.edit-item').hide();
+  $('.edit-icon2').click(function () {
+    $('.modal, .modal-overlay').fadeOut();
   });
 });

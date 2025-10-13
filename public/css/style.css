@@ -20,11 +20,13 @@ header {
 #container {
     flex: 1 1 80%;
     border-right: 1px solid;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 #side-bar {
     max-width: 100%;
-    width: 375px;
+    width: 20vw;
     text-align: center;
 }
 
@@ -67,7 +69,7 @@ header {
 .navi-menu.active {
     display: block;
     position: fixed;
-    top: 0;
+    top: -1px;
     right: 0;
     margin-top: 128px;
 }
@@ -110,10 +112,13 @@ header {
     display: block;
     background-color: #f5f8fa;
     white-space: nowrap;
-    padding: 59px;
-    padding-bottom: 42px;
-    border: 2px solid blue;
-    font-size: 32px;
+    width: 20vw;
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+    border: 1px solid black;
+    font-size: 1.5vw;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .navi-menu li :hover {
@@ -139,7 +144,9 @@ header {
 }
 
 .result.active {
-    display: block;
+    display: flex;
+    margin-left: 160px;
+    font-size: 32px;
 }
 
 /* サイドバーの設定　*/
@@ -156,21 +163,13 @@ header {
     color: #222222;
 }
 
-.follow-list {
-    font-size: 1rem;
-    display: flex;
-    color: #222222;
-    padding-top: 16px;
-    margin-bottom: 16px;
-}
-
-
 .follow-number {
     margin-left: 1rem;
     font-size: 18px;
 }
 
-.follower-list {
+.follower-list,
+.follow-list {
     font-size: 1rem;
     display: flex;
     color: #222222;
@@ -188,16 +187,34 @@ header {
     font-size: 18px;
 }
 
-
 .sidebar-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.sidebar-link {
+    width: 200px;
+    background-color: #0656cf;
+    font-size: 18px;
+    color: white;
+    padding: 24px;
+    border-radius: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-btn {
     background-color: #0656cf;
     font-size: 18px;
     color: white;
     padding: 24px;
     border-radius: 16px;
     margin: 32px auto;
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     width: 200px;
 }
 
@@ -222,41 +239,42 @@ header {
     border-color: #e0e0e0;
 }
 
+.post-form {
+    display: flex;
+}
+
 
 .user-icon {
     width: 64px;
     height: 64px;
     margin-left: 64px;
-    margin-top: 32px;
+    margin-top: 58px;
 }
 
 
 .post {
+    padding-top: 80px;
     border: none;
     margin-left: 32px;
     font-size: 2rem;
-    width: 640px;
+    width: 680px;
     height: 180px;
-}
-
-
-input.post {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
     background-color: #f5f8fa;
 }
 
-input[type="text"]::placeholder {
-    color: #727272;
-}
 
-input[type="text"] {
-    padding-top: 2px;
+.post::placeholder {
+    color: #727272;
 }
 
 
 .post-icon {
+    background-color: #f5f8fa;
     border: none;
     vertical-align: bottom;
-    margin-bottom: 18px;
 }
 
 .post-icon img {
@@ -290,14 +308,16 @@ input[type="text"] {
     display: flex;
     flex-direction: column;
     margin-left: 24px;
+    gap: 12px;
 }
 
 .user-post img {
-    margin-left: 80px;
+    margin-left: 112px;
 }
 
-.user-data {
-    display: flex;
+
+.post-post {
+    margin-top: 8px;
 }
 
 .icon-set {
@@ -314,18 +334,74 @@ input[type="text"] {
 
 .edit-icon {
     height: 5rem;
+    background-color: #f5f8fa;
 }
 
-.edit-item {
+.edit-icon:hover {
+    height: 5rem;
+    background-image: url("/images/edit_h.png");
+}
+
+
+.modal,
+.modal-overlay {
     display: none;
 }
 
-.edit-item.active {
-    display: block;
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    color: rgb(179, 179, 179);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f5f8fa;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.modal-area {
+    display: flex;
+    flex-direction: column;
 }
 
 .delete-icon {
     height: 5rem;
+}
+
+.delete-icon:hover {
+    height: 5rem;
+    background-image: url("/images/trash-h.png");
+}
+
+.post-edit {
+    background-color: #f5f8fa;
+    font-size: 24px;
+    width: 95%;
+    padding-top: 32px;
+    padding-left: 16px;
+    padding-bottom: 24%;
+    display: block;
+    margin: 32px 32px 16px 16px;
+
+}
+
+.edit-icon2 {
+    height: 56px;
+    border: none;
+    background-color: #f5f8fa;
+}
+
+.edit-icon2:hover {
+    height: 56px;
+    background-image: url("/images/edit_h.png");
 }
 
 
@@ -336,22 +412,34 @@ input[type="text"] {
     justify-items: center;
 }
 
-.my-icon,
-.profile-name {
+.change-form {
     display: flex;
+}
+
+.my-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 24px;
 }
 
 .profile-name,
 .profile-email,
 .profile-password,
 .profile-confirmation,
-.profile-bio,
-.profile-icon {
+.profile-bio {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 128px;
+    margin-bottom: 32px;
+}
+
+.profile-icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 128px;
+    margin-bottom: 32px;
 }
 
 .my-data {
@@ -380,8 +468,13 @@ input[type="text"] {
     padding: 16px;
 }
 
+.btn-area {
+    text-align: center;
+}
+
 
 .btn-success {
+    display: inline-block;
     margin-top: 32px;
     background-color: #ed3a50;
     height: 32px;
@@ -446,8 +539,90 @@ input[type="text"] {
     border-bottom: 8px solid;
     border-color: #e0e0e0;
     padding-bottom: 72px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+.other-icon {
+    display: flex;
+    margin-left: 96px;
+    align-items: flex-start;
+}
+
+.account {
+    display: flex;
+    margin-left: 40px;
+    gap: 152px;
+    align-items: flex-start;
+    font-size: 24px;
+    line-height: 40px;
 }
 
 .follow-btn {
-    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 40px;
+    align-self: flex-end;
+}
+
+/* searchページのCSS */
+
+.search-container {
+    display: flex;
+    padding: 56px 0px;
+    border-bottom: 8px solid;
+    border-color: #e0e0e0;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    border: none;
+    vertical-align: bottom;
+    background-color: #f5f8fa;
+    margin-left: 16px;
+}
+
+.search-icon img {
+    height: 50px;
+}
+
+.keyword {
+    width: 320px;
+    height: 56px;
+    margin-left: 88px;
+    border-radius: 8px;
+}
+
+.search-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-user {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40%;
+    margin-top: 40px;
+}
+
+.search-user form {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+.search-user-icon {
+    text-align: left;
+}
+
+.search-name {
+    margin-left: 32px;
+    font-size: 16px;
+    text-align: left;
 }

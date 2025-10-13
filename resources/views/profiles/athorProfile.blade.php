@@ -1,21 +1,26 @@
 <x-login-layout>
   <div class="user-card">
-    <img class='user-icon' src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン" >
-    <div class='user-name'>
-      <h2>ユーザー名</h2>
-      <h2>{{ $users->username }}</h2>
-    </div>
-    <div class='user-bio'>
-      <p>自己紹介</p>
-      <p>{{ $users->bio }}</p>
+
+    <div class='other-icon'>
+      <img src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン" >
     </div>
 
-    <form method="POST" action="{{ Auth::user()->isFollowing($users->id) ? route('unfollow', $users) : route('follow', $users) }}">
-        @csrf
-        <button type="submit" class='follow-btn'>
-            {{ Auth::user()->isFollowing($users->id) ? 'フォロー解除' : 'フォローする' }}
-        </button>
-    </form>
+    <div class='account'>
+      <div class='user-label'>
+        <p>ユーザー名</p>
+        <p>自己紹介</p>
+      </div>
+      <div class='user-info'>
+        <p>{{ $users->username }}</p>
+        <p>{{ $users->bio }}</p>
+      </div>
+    </div>
+
+    <div class='follow-btn'>
+      <button type="submit"class="btn {{ Auth::user()->isFollowing($users->id) ? 'btn-primary' : 'btn-danger' }}">
+        {{ Auth::user()->isFollowing($users->id) ? 'フォロー解除' : 'フォローする' }}
+      </button>
+    </div>
   </div>
 
   <ul class='post-list'>

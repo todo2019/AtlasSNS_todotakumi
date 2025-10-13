@@ -1,25 +1,25 @@
 <x-login-layout>
 
- <div class="container">
-    <form action="/search" method="post">
+ <div class="search-container">
+    <form action="/search" method="post" class='search' >
       @csrf
       <input type="text" name="keyword" class="keyword" placeholder="ユーザー名">
       <button type="submit" class="search-icon" >
         <img src="/images/search.png">
       </button>
-        <h1 class="result">検索ワード：{{ $keyword ?? '' }}</h1>
+        <span class="result">検索ワード：{{ $keyword ?? '' }}</span>
     </form>
   </div>
 
-    <ul class="list">
+    <ul class="search-list">
       @foreach($users as $user)
         @if($user->id !== Auth::id())
-          <li>
-            <span class="icon">{{ $user->icon_image}}</span>
-            <span class="name">{{ $user->username}}</span>
+          <li class = 'search-user'>
+            <img src="{{ asset('images/' . $user->icon_image) }}" class= 'search-user-icon' alt="アイコン">
+            <span class="search-name">{{ $user->username}}</span>
             <form action="{{ route('toggleFollow', $user->id) }}" method="post">
               @csrf
-              <button type="submit">
+              <button type="submit"class="btn {{ Auth::user()->isFollowing($user->id) ? 'btn-primary' : 'btn-danger' }}">
                 {{ Auth::user()->isFollowing($user->id) ? 'フォロー解除' : 'フォローする' }}
               </button>
             </form>
