@@ -1,12 +1,12 @@
 $(function () {
-  $('#menu-toggle').click(function () {
+  $('#menu_toggle').click(function () {
     $(this).toggleClass('active');
-    $('.navi-menu').toggleClass('active');
+    $('.navi_menu').toggleClass('active');
 
 
-    $('.navi-menu li a').click(function () {
-      $('#menu-toggle').removeClass('active').html('>');
-      $('.navi-menu').removeClass('active');
+    $('.navi_menu li a').click(function () {
+      $('#menu_toggle').removeClass('active').html('>');
+      $('.navi_menu').removeClass('active');
     });
   });
 });
@@ -16,7 +16,7 @@ $(function () {
     $('.result').addClass('active');
   }
 
-  $('.search-icon').click(function (e) {
+  $('.search_icon').click(function (e) {
     const keyword = $('.keyword').val().trim();
     $('.result').removeClass('active');
     localStorage.removeItem('resultActive');
@@ -45,11 +45,11 @@ $(function () {
 
 
 $(function () {
-  $('.edit-icon').click(function () {
+  $('.edit_icon').click(function () {
     $('.modal, .modal-overlay').fadeIn();
   });
 
-  $('.edit-icon2').click(function () {
+  $('.modal_edit').click(function () {
     $('.modal, .modal-overlay').fadeOut();
   });
 });

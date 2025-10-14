@@ -1,40 +1,40 @@
 <x-login-layout>
-  <div class="user-card">
+  <div class="user_card">
 
-    <div class='other-icon'>
+    <div class='athorr_icon'>
       <img src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン" >
     </div>
 
     <div class='account'>
-      <div class='user-label'>
+      <div>
         <p>ユーザー名</p>
         <p>自己紹介</p>
       </div>
-      <div class='user-info'>
+      <div>
         <p>{{ $users->username }}</p>
         <p>{{ $users->bio }}</p>
       </div>
     </div>
 
-    <div class='follow-btn'>
+    <div class='follow_btn'>
       <button type="submit"class="btn {{ Auth::user()->isFollowing($users->id) ? 'btn-primary' : 'btn-danger' }}">
         {{ Auth::user()->isFollowing($users->id) ? 'フォロー解除' : 'フォローする' }}
       </button>
     </div>
   </div>
 
-  <ul class='post-list'>
+  <ul class='post_list'>
     @foreach($posts as $post)
-      <li class='post-result'>
-        <div class='user-post'>
+      <li class='post_result'>
+        <div class='user_post'>
           <img src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン">
 
-          <div class='user-data'>
+          <div class='user_data'>
             <p>{{ $post->user->username }}</p>
             <p>{{ $post->post }}</p>
           </div>
         </div>
-          <p class='update-at'>{{ $post->updated_at }}</p>
+          <p class='update_at'>{{ $post->updated_at }}</p>
       </li>
     @endforeach
   </ul>

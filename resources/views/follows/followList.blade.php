@@ -1,26 +1,26 @@
 <x-login-layout>
 
   <div class='followList'>
-    <p class='follow-title'>フォローリスト</p>
+    <span class='follow_title'>フォローリスト</span>
     @foreach($follows as $follow)
       <a href="{{ route('user.profile.post', ['user' => $follow->id]) }}">
-        <img src="{{ asset('images/' . $follow->icon_image) }}" class='follow-icon' alt="アイコン">
+        <img src="{{ asset('images/' . $follow->icon_image) }}" class='follow_icon' alt="アイコン">
       </a>
     @endforeach
   </div>
   <ul >
     @foreach($posts as $post)
-      <li class='post-result'>
-        <div class='user-post'>
+      <li class='post_result'>
+        <div class='user_post'>
           <a href="{{ route('user.profile.post', ['user' => $post->user->id]) }}">
             <img src="{{ asset('images/' . $post->user->icon_image) }}" alt="アイコン">
           </a>
-          <div class='user-data'>
+          <div class='user_data'>
             <p>{{ $post->user->username }}</p>
             <p>{{ $post->post }}</p>
           </div>
         </div>
-        <p class='update-at'>{{ $post->updated_at }}</p>
+        <p class='update_at'>{{ $post->updated_at }}</p>
     @endforeach
   </ul>
 

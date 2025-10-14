@@ -2,7 +2,7 @@
 
   <div id="clear">
     <ul>
-      <li class="entry-user">
+      <li class="entry_user">
         {{ session('username') }}さん
         <br>
         ようこそ！AtlasSNSへ！
@@ -14,7 +14,7 @@
         早速ログインをしてみましょう。
       </li>
 
-      <p class="login2"><a href="login">ログイン画面へ</a></p>
+      <p class="transfer_login"><a href="login">ログイン画面へ</a></p>
     </ul>
   </div>
 </x-logout-layout>

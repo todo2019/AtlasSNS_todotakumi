@@ -3,12 +3,12 @@
   <!-- 適切なURLを入力してください -->
   {!! Form::open(['url' => 'register']) !!}
 
-  <div class='register-screen'>
+  <div class='register_screen'>
     <p class='entry'>新規ユーザー登録</p>
 
 
-    <ul class="register-form">
-      <li class="register-item">
+    <ul>
+      <li class="register_item">
         {{ Form::label('ユーザー名') }}
         {{ Form::text('username',null,['class' => 'input']) }}
           @error('username')
@@ -30,8 +30,8 @@
         {{ Form::label('パスワード確認') }}
         {{ Form::text('password_confirmation',null,['class' => 'input']) }}
       </li>
-      <li class="btn-area2">
-        {{ Form::submit('新規登録',['class'=>'register-btn']) }}
+      <li class="btn_area">
+        {{ Form::submit('新規登録',['class'=>'register_btn']) }}
       </li>
 
       <p class='login'><a href="login">ログイン画面へ戻る</a></p>

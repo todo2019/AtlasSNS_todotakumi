@@ -52,14 +52,14 @@ class FollowsController extends Controller
 
         $authUser = Auth::user();
 
+        $follows = $authUser -> followings() ->get();
+
         $followUserIds = $authUser->followings()->pluck('users.id')->toArray();
 
         $posts = Post::with('user')
         ->whereIn('user_id', $followUserIds)
         ->orderBy('created_at', 'desc')
         ->get();
-
-        $follows = $posts->pluck('user')->unique('id');
 
         return view('follows.followList', compact('posts','follows'));
     }
@@ -68,14 +68,14 @@ class FollowsController extends Controller
 
         $authUser = Auth::user();
 
+        $followers = $authUser -> followers() ->get();
+
         $followerUserIds = $authUser->followers()->pluck('users.id')->toArray();
 
         $posts = Post::with('user')
         ->whereIn('user_id', $followerUserIds)
         ->orderBy('created_at', 'desc')
         ->get();
-
-        $followers = $posts->pluck('user')->unique('id');
 
         return view('follows.followerList', compact('posts','followers'));
     }

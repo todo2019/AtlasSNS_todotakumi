@@ -2,27 +2,26 @@
 
 
    <div class='followerList'>
-    <p class='follower-title'>フォロワーリスト</p>
-    {{ dd($followers) }}
-    @foreach($followers as $follower)
+    <span class='follower_title'>フォロワーリスト</span>
+        @foreach($followers as $follower)
       <a href="{{ route('user.profile.post', ['user' => $follower->id]) }}">
-        <img src="{{ asset('images/' . $follower->icon_image) }}" class='follower-icon' alt="アイコン">
+        <img src="{{ asset('images/' . $follower->icon_image) }}" class='follower_icon' alt="アイコン">
       </a>
     @endforeach
   </div>
    <ul >
     @foreach($posts as $post)
-      <li class='post-result'>
-        <div class='user-post'>
+      <li class='post_result'>
+        <div class='user_post'>
           <a href="{{ route('user.profile.post', ['user' => $post->user->id]) }}">
             <img src="{{ asset('images/' . $post->user->icon_image) }}" alt="アイコン">
           </a>
-          <div class='user-data'>
+          <div class='user_data'>
             <p>{{ $post->user->username }}</p>
             <p>{{ $post->post }}</p>
           </div>
         </div>
-        <p class='update-at'>{{ $post->updated_at }}</p>
+        <p class='update_at'>{{ $post->updated_at }}</p>
 
     @endforeach
   </ul>
