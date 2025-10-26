@@ -46,10 +46,19 @@ $(function () {
 
 $(function () {
   $('.edit_icon').click(function () {
-    $('.modal, .modal-overlay').fadeIn();
+    const postItem = $(this).closest('.post_result');
+    postItem.find('.modal, .modal_overlay').fadeIn();
   });
 
   $('.modal_edit').click(function () {
-    $('.modal, .modal-overlay').fadeOut();
+    const postItem = $(this).closest('.post_result');
+    postItem.find('.modal, .modal_overlay').fadeOut();
+  });
+
+  $('.modal_overlay').click(function (e) {
+    if ($(e.target).is('.modal_overlay')) {
+      const postItem = $(this).closest('.post_result');
+      postItem.find('.modal, .modal_overlay').fadeOut();
+    }
   });
 });

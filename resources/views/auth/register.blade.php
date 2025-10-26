@@ -16,19 +16,19 @@
           @enderror
 
         {{ Form::label('メールアドレス') }}
-        {{ Form::email('email',null,['class' => 'input']) }}
+        {{ Form::text('email',null,['class' => 'input']) }}
           @error('email')
             <div class="error">{{ $message }}</div>
           @enderror
 
         {{ Form::label('パスワード') }}
-        {{ Form::text('password',null,['class' => 'input']) }}
+        {{ Form::password('password',null,['class' => 'input']) }}
           @error('password')
             <div class="error">{{ $message }}</div>
           @enderror
 
         {{ Form::label('パスワード確認') }}
-        {{ Form::text('password_confirmation',null,['class' => 'input']) }}
+        {{ Form::password('password_confirmation',null,['class' => 'input']) }}
       </li>
       <li class="btn_area">
         {{ Form::submit('新規登録',['class'=>'register_btn']) }}

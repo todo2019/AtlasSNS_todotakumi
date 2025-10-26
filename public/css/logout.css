@@ -164,6 +164,10 @@ header p {
     text-decoration: underline;
 }
 
+.error {
+    color: #ed3a50;
+}
+
 /* 登録完了画面のCSS　*/
 
 #clear {

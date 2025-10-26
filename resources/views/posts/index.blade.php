@@ -2,10 +2,23 @@
 
   <ul>
     <li class="post_container">
-      <img class='user_icon' src="{{ asset('images/' .  Auth::user()->icon_image) }}" alt="アイコン" >
+       <img class ='user_icon' src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="アイコン">
       <form action="{{ route('post') }}" method="post" class='post_form'>
-        @csrf
-        <textarea name="post" class="post" placeholder="投稿内容を入力してください。"></textarea>
+        <div>
+          @csrf
+          <textarea name="post" class="post" placeholder="投稿内容を入力してください。"></textarea>
+          @error('post')
+            <div class="error">{{ $message }}</div>
+          @enderror
+          @error('post.update')
+            <div class="error">{{ $message }}</div>
+          @enderror
+        </div>
+        @if (session('success'))
+          <div class="alert-success">
+            {{ session('success') }}
+          </div>
+        @endif
         <button type="submit" class="post_icon" >
           <img src="/images/post.png">
         </button>
@@ -18,14 +31,14 @@
       <li class='post_result'>
         <div class='user_post'>
           <a href="{{ route('user.profile.post', ['user' => $post->user->id]) }}">
-            <img src="{{ asset('images/' . $post->user->icon_image) }}" alt="アイコン">
+            <img class='icon_list' src="{{ asset('storage/' . $post->user->icon_image) }}" alt="アイコン">
           </a>
           <div class='user_data'>
             <p class='post_username'>{{ $post->user->username }}</p>
-            <p class='post_post'>{{ $post->post }}</p>
+            <p class='post_post'>{!! nl2br(e($post->post)) !!}</p>
           </div>
         </div>
-        <p class='update_at'>{{ $post->updated_at }}</p>
+        <p class='update_at'>{{ $post->updated_at->format('Y-m-d H:i') }}</p>
       @if($post->user_id == Auth::id())
       <div class='icon_set'>
         <button type="button" class="edit_button">

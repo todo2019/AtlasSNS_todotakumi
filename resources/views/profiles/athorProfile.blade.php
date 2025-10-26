@@ -1,7 +1,7 @@
 <x-login-layout>
   <div class="user_card">
 
-    <div class='athorr_icon'>
+    <div class='athor_icon'>
       <img src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン" >
     </div>
 
@@ -17,9 +17,12 @@
     </div>
 
     <div class='follow_btn'>
-      <button type="submit"class="btn {{ Auth::user()->isFollowing($users->id) ? 'btn-primary' : 'btn-danger' }}">
-        {{ Auth::user()->isFollowing($users->id) ? 'フォロー解除' : 'フォローする' }}
-      </button>
+      <form action="{{ route('toggleFollow', $users->id) }}" method="post">
+        @csrf
+        <button type="submit"class="btn {{ Auth::user()->isFollowing($users->id) ? 'btn-primary' : 'btn-danger' }}">
+          {{ Auth::user()->isFollowing($users->id) ? 'フォロー解除' : 'フォローする' }}
+        </button>
+      </form>
     </div>
   </div>
 
@@ -31,10 +34,12 @@
 
           <div class='user_data'>
             <p>{{ $post->user->username }}</p>
-            <p>{{ $post->post }}</p>
+            <p>{!! nl2br(e($post->post)) !!}</p>
+
           </div>
         </div>
-          <p class='update_at'>{{ $post->updated_at }}</p>
+          <p class='update_at'>{{ $post->updated_at->format('Y-m-d H:i') }}</p>
+
       </li>
     @endforeach
   </ul>

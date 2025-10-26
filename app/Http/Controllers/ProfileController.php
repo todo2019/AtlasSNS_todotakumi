@@ -14,20 +14,41 @@ use Illuminate\View\View;
 class ProfileController extends Controller
 {
     public function profile(){
-        return view('profiles.profile');
+
+      $user = Auth::user();
+
+      return view('profiles.profile', compact('user'));
     }
 
     public function update(Request $request){
 
+    $message = [
+      'username.required' => 'ユーザー名は必須です。',
+      'username.min' => 'ユーザー名は2文字以上で入力してください。',
+      'username.max' => 'ユーザー名は12文字以内で入力してください。',
+      'email.required' => 'メールアドレスは必須です。',
+      'email.email' => '有効なメールアドレスを入力してください。',
+      'email.min' => 'メールアドレスは5文字以上で入力してください',
+      'email.max' => 'メールアドレスは40文字以内で入力してください',
+      'email.unique' => 'このメールアドレスは既に使用されています。',
+      'password.required' => 'パスワードは必須です。',
+      'password.alpha_num' => 'パスワードは英数字のみで入力してください。',
+      'password.min' => 'パスワードは8文字以上で入力してください。',
+      'password.max' => 'パスワードは20文字以内で入力してください。',
+      'password.confirmed' => 'パスワード確認用が一致していません。',
+      'bio' => '自己紹介は150文字以内で入力してください',
+      'icon_image' => 'アイコンは画像ファイルを選択ください',
+    ];
+
     $id = Auth::id();
 
     $request->validate([
-      'username'   => 'nullable|string|min:2|max:12',
-      'email'      => 'nullable|string|email|min:5|max:40|unique:users,email,'. Auth::id(),
-      'password'   => 'nullable|string|alpha_num|min:8|max:20|confirmed',
+      'username'   => 'required|string|min:2|max:12',
+      'email'      => 'required|string|email|min:5|max:40|unique:users,email,'. Auth::id(),
+      'password'   => 'required|string|alpha_num|min:8|max:20|confirmed',
       'bio'        => 'nullable|string|max:150',
       'icon_image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg',
-    ]);
+    ], $message);
 
         $hasAnyChange =
         $request->filled('username') ||
