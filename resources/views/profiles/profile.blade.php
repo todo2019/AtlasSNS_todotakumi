@@ -7,7 +7,7 @@
 
       <div class="change_form">
 
-        <img class ='my_icon' src="{{ asset('storage/' . $user->icon_image) }}" alt="アイコン">
+        <img class='my_icon' src="{{ $user->icon_image === 'icon1.png'? asset('images/' . $user->icon_image): asset('storage/' . $user->icon_image) }}" alt="ユーザーアイコン">
 
         <ul class="UserProfile">
           <li class='profile_name'>

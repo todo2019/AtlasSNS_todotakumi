@@ -1,8 +1,8 @@
 <x-login-layout>
   <div class="user_card">
 
-    <div class='athor_icon'>
-      <img src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン" >
+    <div >
+      <img class="athor_icon" src="{{ $users->icon_image === 'icon1.png'? asset('images/' . $users->icon_image): asset('storage/' . $users->icon_image) }}" alt="ユーザーアイコン">
     </div>
 
     <div class='account'>
@@ -30,8 +30,7 @@
     @foreach($posts as $post)
       <li class='post_result'>
         <div class='user_post'>
-          <img src="{{ asset('images/' . $users->icon_image) }}" alt="アイコン">
-
+          <img class='icon_list' src="{{ $post->user->icon_image === 'icon1.png'? asset('images/' . $post->user->icon_image): asset('storage/' . $post->user->icon_image) }}" alt="ユーザーアイコン">
           <div class='user_data'>
             <p>{{ $post->user->username }}</p>
             <p>{!! nl2br(e($post->post)) !!}</p>

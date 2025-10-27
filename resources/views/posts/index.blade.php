@@ -2,7 +2,7 @@
 
   <ul>
     <li class="post_container">
-       <img class ='user_icon' src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="アイコン">
+      <img class='user_icon' src="{{ Auth::user()->icon_image === 'icon1.png'? asset('images/' . Auth::user()->icon_image): asset('storage/' . Auth::user()->icon_image) }}" alt="ユーザーアイコン">
       <form action="{{ route('post') }}" method="post" class='post_form'>
         <div>
           @csrf
@@ -31,7 +31,7 @@
       <li class='post_result'>
         <div class='user_post'>
           <a href="{{ route('user.profile.post', ['user' => $post->user->id]) }}">
-            <img class='icon_list' src="{{ asset('storage/' . $post->user->icon_image) }}" alt="アイコン">
+            <img class='icon_list' src="{{ $post->user->icon_image === 'icon1.png'? asset('images/' . $post->user->icon_image): asset('storage/' . $post->user->icon_image) }}" alt="ユーザーアイコン">
           </a>
           <div class='user_data'>
             <p class='post_username'>{{ $post->user->username }}</p>

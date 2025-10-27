@@ -85,9 +85,10 @@ class ProfileController extends Controller
 
       public function userdata()
     {
-        $users = User::with('posts')->get();
+        $users = User::with('posts')
+                ->where('id', '!=', Auth::id())
+                ->get();
 
         return view('user.profile', compact('users'));
     }
-
 };

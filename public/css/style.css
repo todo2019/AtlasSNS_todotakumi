@@ -513,6 +513,8 @@ header {
 }
 
 .athor_icon {
+    width: 64px;
+    height: 64px;
     display: flex;
     margin-left: 96px;
     align-items: flex-start;

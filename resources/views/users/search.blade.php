@@ -15,7 +15,7 @@
       @foreach($users as $user)
         @if($user->id !== Auth::id())
           <li class = 'search_user'>
-            <img  class='icon_list' src="{{ asset('storage/' . $user->icon_image) }}" alt="アイコン">
+            <img class='icon_list' src="{{ $user->icon_image === 'icon1.png'? asset('images/' . $user->icon_image): asset('storage/' . $user->icon_image) }}" alt="ユーザーアイコン">
             <span class="search_username">{{ $user->username}}</span>
             <form action="{{ route('toggleFollow', $user->id) }}" method="post">
               @csrf

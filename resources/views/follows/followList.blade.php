@@ -4,7 +4,7 @@
     <span class='follow_title'>フォローリスト</span>
     @foreach($follows as $follow)
       <a href="{{ route('user.profile.post', ['user' => $follow->id]) }}">
-        <img src="{{ asset('storage/' . $follow->icon_image) }}" class='follow_icon' alt="アイコン">
+        <img class='follow_icon' src="{{ $follow->icon_image === 'icon1.png'? asset('images/' . $follow->icon_image): asset('storage/' . $follow->icon_image) }}" alt="ユーザーアイコン">
       </a>
     @endforeach
   </div>
@@ -13,7 +13,7 @@
       <li class='post_result'>
         <div class='user_post'>
           <a href="{{ route('user.profile.post', ['user' => $post->user->id]) }}">
-            <img class='icon_list' src="{{ asset('storage/' . $post->user->icon_image) }}" alt="アイコン">
+            <img class='icon_list' src="{{ $post->user->icon_image === 'icon1.png'? asset('images/' . $post->user->icon_image): asset('storage/' . $post->user->icon_image) }}" alt="ユーザーアイコン">
           </a>
           <div class='user_data'>
             <p>{{ $post->user->username }}</p>
